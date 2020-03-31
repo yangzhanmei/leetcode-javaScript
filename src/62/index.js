@@ -4,10 +4,19 @@
  * @return {number}
  */
 var lastRemaining = function(n, m) {
-  let result = 0;
-  for (let i = 2; i <= n; i++) {
-    result = (result + m) % i;
+  let nums = [];
+  for (let i = 0; i < n; i++) {
+    nums.push(i);
+  }
+  let j = m;
+  while (nums.length > 1) {
+    j--;
+    if (j >= nums.length) {
+      j = j % nums.length;
+    }
+    nums.splice(j, 1);
+    j += m;
   }
 
-  return result;
+  return nums[0];
 };
